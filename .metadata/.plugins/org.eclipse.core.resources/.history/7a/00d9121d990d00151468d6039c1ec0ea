@@ -1,0 +1,12 @@
+package firstTry;
+
+import org.newdawn.slick.Image;
+
+public class Bullet extends GameObject{
+	
+	private static final float VELOCITY = 0.2f;
+	public Bullet(float x, float y, Image sprite){
+		super(x,y,VELOCITY, sprite);
+	}
+
+}

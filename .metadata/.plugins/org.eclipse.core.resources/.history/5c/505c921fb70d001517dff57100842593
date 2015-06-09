@@ -1,0 +1,89 @@
+package firstTry;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
+
+public class GameObject{
+	private World world;
+	private Image image;
+	private float rotation;
+	private Vector2f position;
+	
+	public GameObject() {
+		try {
+			setImage(new Image("images/empty.png"));
+		} catch(SlickException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Vector2f getPos(){
+		return position;
+	}
+	
+	public void setPos(float x, float y) {
+		position = new Vector2f(x,y);
+	}
+	
+	public float getX() {
+		return position.x;
+	}
+	
+	public float getY() {
+		return position.y;
+	}
+	
+	public void setX(float x) {
+		position.x = x;
+	}
+	
+	public void setY(float y) {
+		position.y = y;
+	}
+	
+	public void changeX(float x) {
+		position.x += x;
+	}
+	
+	public void changeY(float y) {
+		position.y += y;
+	}
+	
+	public float getRot() {
+		return rotation;
+	}
+	
+	public void setRotation(float r) {
+		rotation = r;
+	}
+	
+	public World getWorld() {
+		return world;
+	}
+	
+	public void setWorld(World world) {
+		this.world = world;
+	}
+
+	public void setImage(Image i) {
+		image = i;
+	}
+	
+	public void draw() {
+		image.draw(position.x - getWidth()/2, position.y - getHeight()/2);
+	}
+	
+	public int getWidth() {
+		return image.getWidth();
+	}
+	
+	public int getHeight() {
+		return image.getHeight();
+	}
+	
+	public boolean atWorldEdge() {
+		return getX() < getWidth() / 2 || getX() > 1920 - getWidth() / 2 || 
+				getY() < getHeight() / 2 || getY() > 1080 - getHeight() / 2;
+	}
+}

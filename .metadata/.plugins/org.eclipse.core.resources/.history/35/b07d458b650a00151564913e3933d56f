@@ -1,0 +1,29 @@
+package firstTry;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+
+public class Ball extends GameObject {
+	private final float VELOCITY = 0.3f;
+	
+	
+	public Ball(){
+		Image image = new Image("images/ball.png");
+		super(image);
+	}
+	
+	public void input(Input input, int delta){
+		if(input.isKeyDown(Input.KEY_UP)){
+			getPos().y -= VELOCITY * delta;
+    	}
+		if(input.isKeyDown(Input.KEY_DOWN)){
+			getPos().y += VELOCITY * delta;
+    	}
+		if(input.isKeyDown(Input.KEY_LEFT)){
+			getPos().x -= VELOCITY * delta;
+    	}
+		if(input.isKeyDown(Input.KEY_RIGHT)){
+			getPos().x += VELOCITY * delta;
+    	}
+	}
+}

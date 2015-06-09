@@ -1,0 +1,27 @@
+package firstTry;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+
+public class Ball extends Entity {
+	
+	private static final float VELOCITY = (float)0.3;
+	public Ball(float x, float y, Image sprite){
+		super(x,y,VELOCITY, sprite);
+	}
+	
+	public void input(Input input, int delta){
+		if(input.isKeyDown(Input.KEY_UP)){
+			getPos().y -= VELOCITY * delta;
+    	}
+		if(input.isKeyDown(Input.KEY_DOWN)){
+			getPos().y += VELOCITY * delta;
+    	}
+		if(input.isKeyDown(Input.KEY_LEFT)){
+			getPos().x -= VELOCITY * delta;
+    	}
+		if(input.isKeyDown(Input.KEY_RIGHT)){
+			getPos().x += VELOCITY * delta;
+    	}
+	}
+}

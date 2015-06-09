@@ -1,0 +1,48 @@
+package firstTry;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
+
+import static java.lang.Math.*;
+
+public class Ball extends GameObject {
+	private final float VELOCITY = 0.3f;
+	
+	
+	public Ball() throws SlickException{
+		super();
+		Image image = new Image("images/ball.png");
+		setImage(image);
+	}
+	
+	public void update(GameContainer gc, StateBasedGame gs, int delta) {
+		input(gc.getInput(), delta);
+	}
+	
+	public void input(Input input, int delta){
+		if(input.isKeyDown(Input.KEY_UP)){
+			getPos().y -= VELOCITY * delta;
+    	}
+		if(input.isKeyDown(Input.KEY_DOWN)){
+			getPos().y += VELOCITY * delta;
+    	}
+		if(input.isKeyDown(Input.KEY_LEFT)){
+			getPos().x -= VELOCITY * delta;
+    	}
+		if(input.isKeyDown(Input.KEY_RIGHT)){
+			getPos().x += VELOCITY * delta;
+    	}
+		
+		turnTowards(input.getMouseX(), input.getMouseY());
+	}
+	
+	public void turnTowards(int mouseX, int mouseY) {
+		float dx = abs(mouseX - getX());
+		float dy = abs(mouseY - getY());
+		
+		float angle = (float)toDegrees(atan2(dy, dx));
+	}
+}

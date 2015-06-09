@@ -1,0 +1,31 @@
+package firstTry;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Vector2f;
+
+public class GameObject {
+	private float VELOCITY, rotation;
+	private Vector2f position;
+	private Image sprite;
+	
+	public GameObject(float x, float y, float velocity, Image image) {
+		position = new Vector2f(x,y);
+		sprite = image;
+		VELOCITY = velocity;
+	}
+	
+	public Vector2f getPos(){
+		return position;
+	}
+	
+	public float getRot() {
+		return rotation;
+	}
+	
+	public void setRot(float rot) {
+		rotation = rot;
+	}
+	public void draw() {
+		sprite.draw(position.x, position.y);
+	}
+}
