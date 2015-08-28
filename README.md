@@ -1,3 +1,3 @@
-# Long-Term-Project
+# LongTermProject
 
 Place all files relating to the Long Term Project here.
